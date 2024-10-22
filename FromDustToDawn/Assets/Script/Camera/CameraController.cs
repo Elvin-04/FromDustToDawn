@@ -14,7 +14,7 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
-        targetZoom = cameraTransform.position.z; 
+        targetZoom = cameraTransform.position.z;
     }
 
     public void OnZoom(InputAction.CallbackContext context)
@@ -28,7 +28,7 @@ public class CameraController : MonoBehaviour
     private void Update()
     {
         float newZoom = Mathf.SmoothDamp(cameraTransform.position.z, targetZoom, ref zoomVelocity, zoomSmoothing);
-        newZoom = Mathf.Clamp(newZoom, minZoom, maxZoom);
         cameraTransform.position = cameraTransform.position + cameraTransform.forward * (newZoom - cameraTransform.position.z);
     }
+
 }

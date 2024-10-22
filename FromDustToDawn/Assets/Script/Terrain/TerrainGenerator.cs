@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using UnityEditor;
 
-public class optionsGenerator : MonoBehaviour
+public class TerrainGenerator : MonoBehaviour
 {
     public GameObject chunkPrefab;
     public GameObject waterPlane;
@@ -45,17 +45,15 @@ public class optionsGenerator : MonoBehaviour
     //Generate all the chunks and set the water options
     private void GenerateMap()
     {
-        // Ajouter des chunks supplémentaires autour de la carte pour les falaises
-        for (int x = 0; x <= genOptions.chunkWidth; x++)
+        for (int x = 0; x < genOptions.chunkWidth; x++)
         {
-            for (int y = 0; y <= genOptions.chunkHeight; y++)
+            for (int y = 0; y < genOptions.chunkHeight; y++)
             {
                 Vector3 pos = new Vector3(x * genOptions.meshSize, 0, y * genOptions.meshSize);
                 CreateChunk(pos);
             }
         }
 
-        // Ajuster la taille et la position du plan d'eau
         waterPlane.transform.localScale = new Vector3(genOptions.meshSize / 10 * (genOptions.chunkWidth + 2), 1, genOptions.meshSize / 10 * (genOptions.chunkHeight + 2));
         waterPlane.transform.position = new Vector3(genOptions.meshSize * genOptions.chunkWidth / 2, genOptions.waterLevel, genOptions.meshSize * genOptions.chunkHeight / 2);
     }

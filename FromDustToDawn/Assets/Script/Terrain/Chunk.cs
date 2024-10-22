@@ -61,6 +61,8 @@ public class Chunk : MonoBehaviour
         mesh.RecalculateNormals();
         mesh.RecalculateBounds();
 
+        GetComponent<MeshCollider>().sharedMesh = mesh;
+
 
         GetComponent<MeshFilter>().mesh = mesh;
     }
