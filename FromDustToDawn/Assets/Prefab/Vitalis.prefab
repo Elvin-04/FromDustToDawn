@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2660262935199398061}
   - component: {fileID: 7273255484789834283}
   - component: {fileID: 441899420187772567}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1454831862355404478}
   - component: {fileID: 4796676371789384703}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Vitalis
   m_TagString: Vitalis
   m_Icon: {fileID: 0}

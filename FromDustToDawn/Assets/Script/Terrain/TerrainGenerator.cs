@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 
 using UnityEditor;
+using Unity.VisualScripting.FullSerializer;
 
 public class TerrainGenerator : MonoBehaviour
 {
@@ -10,19 +11,37 @@ public class TerrainGenerator : MonoBehaviour
 
     public GenerationOptions genOptions; 
 
+    public static TerrainGenerator instance;
 
+    public GameObject addTerrainButtonPrefab;
+
+    private GameObject addButtonWidth, addButtonHeight;
+    private float initSize;
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {
         genOptions.seed = Random.Range(1, 1000000);
 
-        GenerateMap();
-        UpdateChunkValues();
+        GenerateAllTerrain();
     }
 
-    private void OnValidate()
+    public void AddTerrain(int side)
     {
+        if (side == 0) genOptions.chunkWidth++;
+        if (side == 1) genOptions.chunkHeight++;
+
+        GenerateAllTerrain();
+    }
+
+    private void GenerateAllTerrain()
+    {
+        GenerateMap();
         UpdateChunkValues();
+        CreateAddTerrainButtons();
     }
 
     //Update chunks values depending of the GenerationOptions struct
@@ -54,8 +73,31 @@ public class TerrainGenerator : MonoBehaviour
             }
         }
 
-        waterPlane.transform.localScale = new Vector3(genOptions.meshSize / 10 * (genOptions.chunkWidth + 2), 1, genOptions.meshSize / 10 * (genOptions.chunkHeight + 2));
+        waterPlane.transform.localScale = new Vector3(genOptions.meshSize / 10 * (genOptions.chunkWidth), 1, genOptions.meshSize / 10 * (genOptions.chunkHeight));
         waterPlane.transform.position = new Vector3(genOptions.meshSize * genOptions.chunkWidth / 2, genOptions.waterLevel, genOptions.meshSize * genOptions.chunkHeight / 2);
+    }
+
+    public void CreateAddTerrainButtons()
+    {
+        if(addButtonWidth == null)
+            addButtonWidth = Instantiate(addTerrainButtonPrefab);
+        if(addButtonHeight == null)
+        {
+            addButtonHeight = Instantiate(addTerrainButtonPrefab); 
+            initSize = addButtonHeight.GetComponent<RectTransform>().sizeDelta.x;
+
+        }
+       
+
+        addButtonWidth.transform.position = new Vector3(genOptions.meshSize * ((float)genOptions.chunkWidth + 0.5f) + 1, genOptions.waterLevel, (genOptions.meshSize * genOptions.chunkHeight) / 2);
+        addButtonWidth.GetComponent<ExtandTerrain>().side = 0;
+        RectTransform buttonWidthRT = addButtonWidth.GetComponent<RectTransform>();
+        buttonWidthRT.sizeDelta = new Vector2(initSize, initSize * genOptions.chunkHeight);
+
+        addButtonHeight.transform.position = new Vector3((genOptions.meshSize * genOptions.chunkWidth) / 2, genOptions.waterLevel, genOptions.meshSize * ((float)genOptions.chunkHeight + 0.5f) + 1);
+        addButtonHeight.GetComponent<ExtandTerrain>().side = 1;
+        RectTransform buttonHeightRT = addButtonHeight.GetComponent<RectTransform>();
+        buttonHeightRT.sizeDelta = new Vector2(initSize * genOptions.chunkWidth, initSize);
     }
 
 }

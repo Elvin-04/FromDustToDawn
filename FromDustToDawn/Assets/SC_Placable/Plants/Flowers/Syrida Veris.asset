@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b61387a515b3f064a8110179d06e65bb, type: 3}
+  m_Name: Syrida Veris
+  m_EditorClassIdentifier: 
+  price: 0
+  visualRepresentation: {fileID: 0}
+  objectPrefab: {fileID: 7212281604016815928, guid: 72b350a16aae88947ae8cab62da69c5b, type: 3}
+  isVegetation: 1
+  OCreated: 10
+  vitalisCreated: 10
+  delay: 15
+  underwater: 0
+  onWater: 0
+  isAlive: 0
+  OUsed: 0
+  comportement: 0

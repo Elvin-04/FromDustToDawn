@@ -4,7 +4,7 @@ using UnityEngine;
 public class Chunk : MonoBehaviour
 {
     private GenerationOptions options;
-
+    private float previousHeight = 0;
     public void GenerateTerrain(GenerationOptions options)
     {
         this.options = options;
@@ -89,18 +89,17 @@ public class Chunk : MonoBehaviour
         }
 
         //Vector2 centerPoint = new Vector2((options.meshSize * options.chunkWidth) / 2, (options.meshSize * options.chunkWidth) / 2);
-        //Debug.Log(options.meshSize);
-        //Debug.Log(options.chunkWidth);
+  
 
         //float absX = Mathf.Abs(centerPoint.x + transform.position.x);
         //float absZ = Mathf.Abs(centerPoint.y + z);
-        
-        //Debug.Log(absX);
+
         //if (absX > centerPoint.x + 10)
         //{
-        //    return height * options.heightMultiplier ;
+        //    return height * options.heightMultiplier * Normalize(x, z, new Vector2(absX, absZ));
         //}
 
+        //previousHeight = height * options.heightMultiplier;
         return height * options.heightMultiplier;
     }
 

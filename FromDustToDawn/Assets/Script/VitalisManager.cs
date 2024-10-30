@@ -37,11 +37,13 @@ public class VitalisManager : MonoBehaviour
     public void AddVitalis(int amount)
     {
         vitalis += amount;
+        UIManager.instance.UpdateUIVitalisAmount();
     }
 
     public void RemoveVitalis(int amount)
     {
         vitalis = vitalis - amount < 0 ? vitalis = 0 : vitalis -= amount;
+        UIManager.instance.UpdateUIVitalisAmount();
     }
 
     IEnumerator SpawningVitalis()
@@ -81,5 +83,13 @@ public class VitalisManager : MonoBehaviour
         UIManager.instance.UpdateUIVitalisAmount();
         currentVitalisOnMap--;
         Destroy(vitalis);
+    }
+
+    public bool CanBuy(int price)
+    {
+        if(vitalis - price < 0)
+            return false;
+
+        return true;
     }
 }
