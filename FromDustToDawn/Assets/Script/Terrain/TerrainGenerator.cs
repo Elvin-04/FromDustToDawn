@@ -31,8 +31,8 @@ public class TerrainGenerator : MonoBehaviour
 
     public void AddTerrain(int side)
     {
-        if (side == 0) genOptions.chunkWidth++;
-        if (side == 1) genOptions.chunkHeight++;
+        if (side == 0) genOptions.meshWidthByChunk++;
+        if (side == 1) genOptions.meshLengthByChunk++;
 
         GenerateAllTerrain();
     }
@@ -64,17 +64,17 @@ public class TerrainGenerator : MonoBehaviour
     //Generate all the chunks and set the water options
     private void GenerateMap()
     {
-        for (int x = 0; x < genOptions.chunkWidth; x++)
+        for (int x = 0; x < genOptions.meshWidthByChunk; x++)
         {
-            for (int y = 0; y < genOptions.chunkHeight; y++)
+            for (int y = 0; y < genOptions.meshLengthByChunk; y++)
             {
-                Vector3 pos = new Vector3(x * genOptions.meshSize, 0, y * genOptions.meshSize);
+                Vector3 pos = new Vector3(x * genOptions.chunkSize, 0, y * genOptions.chunkSize);
                 CreateChunk(pos);
             }
         }
 
-        waterPlane.transform.localScale = new Vector3(genOptions.meshSize / 10 * (genOptions.chunkWidth), 1, genOptions.meshSize / 10 * (genOptions.chunkHeight));
-        waterPlane.transform.position = new Vector3(genOptions.meshSize * genOptions.chunkWidth / 2, genOptions.waterLevel, genOptions.meshSize * genOptions.chunkHeight / 2);
+        waterPlane.transform.localScale = new Vector3(genOptions.chunkSize / 10 * (genOptions.meshWidthByChunk), 1, genOptions.chunkSize / 10 * (genOptions.meshLengthByChunk));
+        waterPlane.transform.position = new Vector3(genOptions.chunkSize * genOptions.meshWidthByChunk / 2, genOptions.waterLevel, genOptions.chunkSize * genOptions.meshLengthByChunk / 2);
     }
 
     public void CreateAddTerrainButtons()
@@ -89,15 +89,15 @@ public class TerrainGenerator : MonoBehaviour
         }
        
 
-        addButtonWidth.transform.position = new Vector3(genOptions.meshSize * ((float)genOptions.chunkWidth + 0.5f) + 1, genOptions.waterLevel, (genOptions.meshSize * genOptions.chunkHeight) / 2);
+        addButtonWidth.transform.position = new Vector3(genOptions.chunkSize * ((float)genOptions.meshWidthByChunk + 0.5f) + 1, genOptions.waterLevel, (genOptions.chunkSize * genOptions.meshLengthByChunk) / 2);
         addButtonWidth.GetComponent<ExtandTerrain>().side = 0;
         RectTransform buttonWidthRT = addButtonWidth.GetComponent<RectTransform>();
-        buttonWidthRT.sizeDelta = new Vector2(initSize, initSize * genOptions.chunkHeight);
+        buttonWidthRT.sizeDelta = new Vector2(initSize, initSize * genOptions.meshLengthByChunk);
 
-        addButtonHeight.transform.position = new Vector3((genOptions.meshSize * genOptions.chunkWidth) / 2, genOptions.waterLevel, genOptions.meshSize * ((float)genOptions.chunkHeight + 0.5f) + 1);
+        addButtonHeight.transform.position = new Vector3((genOptions.chunkSize * genOptions.meshWidthByChunk) / 2, genOptions.waterLevel, genOptions.chunkSize * ((float)genOptions.meshLengthByChunk + 0.5f) + 1);
         addButtonHeight.GetComponent<ExtandTerrain>().side = 1;
         RectTransform buttonHeightRT = addButtonHeight.GetComponent<RectTransform>();
-        buttonHeightRT.sizeDelta = new Vector2(initSize * genOptions.chunkWidth, initSize);
+        buttonHeightRT.sizeDelta = new Vector2(initSize * genOptions.meshWidthByChunk, initSize);
     }
 
 }
@@ -107,14 +107,14 @@ public struct GenerationOptions
 {
     [Header("   Chunk Options")]
     [Range(1, 256)]
-    public int gridSize;
+    public int chunkResolution;
     [Range(0, 32)]
-    public float meshSize;
+    public float chunkSize;
     public float heightMultiplier;
     [Range(1, 10)]
-    public int chunkWidth;
+    public int meshWidthByChunk;
     [Range(1, 10)]
-    public int chunkHeight;
+    public int meshLengthByChunk;
 
     [Header("   Noise Options")]
     [Range(0f, 0.5f)]

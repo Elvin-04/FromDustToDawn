@@ -43,7 +43,7 @@ namespace BehaviorTree
         private Vector3 GetNextPosition()
         {
 
-            Vector3 startRay = new Vector3(Random.Range(0, mapGen.genOptions.meshSize * mapGen.genOptions.chunkWidth), 10, Random.Range(0, mapGen.genOptions.meshSize * mapGen.genOptions.chunkHeight));
+            Vector3 startRay = new Vector3(Random.Range(0, mapGen.genOptions.chunkSize * mapGen.genOptions.meshWidthByChunk), 10, Random.Range(0, mapGen.genOptions.chunkSize * mapGen.genOptions.meshLengthByChunk));
             RaycastHit hit;
 
             if (Physics.Raycast(startRay, Vector3.down, out hit, Mathf.Infinity, bt.mask) && hit.point.y < mapGen.genOptions.waterLevel)

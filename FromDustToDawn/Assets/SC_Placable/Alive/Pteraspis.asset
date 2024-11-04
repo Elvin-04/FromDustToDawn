@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b61387a515b3f064a8110179d06e65bb, type: 3}
+  m_Name: Pteraspis
+  m_EditorClassIdentifier: 
+  price: 0
+  visualRepresentation: {fileID: 0}
+  objectPrefab: {fileID: 6842827881759338396, guid: e24eb305f0618294ba6bb9d2e5a8d3e0, type: 3}
+  isVegetation: 0
+  OCreated: 0
+  vitalisCreated: 15
+  delay: 15
+  underwater: 0
+  onWater: 0
+  isAlive: 1
+  OUsed: 10
+  comportement: 0

@@ -25,7 +25,7 @@ public class VitalisManager : MonoBehaviour
 
     private void Start()
     {
-        maxVitalisOnMap = maxVitalisByChunk * mapGen.genOptions.chunkWidth * mapGen.genOptions.chunkHeight;
+        maxVitalisOnMap = maxVitalisByChunk * mapGen.genOptions.meshWidthByChunk * mapGen.genOptions.meshLengthByChunk;
         StartCoroutine(SpawningVitalis());
     }
 
@@ -65,7 +65,7 @@ public class VitalisManager : MonoBehaviour
 
     private Vector3 SpawnCoordinate()
     {
-        Vector3 startRay = new Vector3(Random.Range(2, mapGen.genOptions.meshSize * mapGen.genOptions.chunkWidth - 2), 10, Random.Range(2, mapGen.genOptions.meshSize * mapGen.genOptions.chunkHeight - 2));
+        Vector3 startRay = new Vector3(Random.Range(2, mapGen.genOptions.chunkSize * mapGen.genOptions.meshWidthByChunk - 2), 10, Random.Range(2, mapGen.genOptions.chunkSize * mapGen.genOptions.meshLengthByChunk - 2));
         RaycastHit hit;
 
         if (Physics.Raycast(startRay, Vector3.down, out hit, Mathf.Infinity, layerMask))

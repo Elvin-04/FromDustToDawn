@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class PlacableManager : MonoBehaviour
 {
@@ -35,13 +35,13 @@ public class PlacableManager : MonoBehaviour
 
             if(currentPlacable.isVegetation)
             {
-                OxygenManager.instance.AddMaximumOxygen(currentPlacable.OCreated);
+                OxygenManager.instance.AddMaximumOxygen(currentPlacable.OxygenCreated);
                 VitalisAutoCreator vtCreator = preview.AddComponent<VitalisAutoCreator>();
                 vtCreator.StartProducing(currentPlacable.vitalisCreated, currentPlacable.delay);
             }
             else if(currentPlacable.isAlive)
             {
-                OxygenManager.instance.RemoveCurrentOxygen(currentPlacable.OUsed);
+                OxygenManager.instance.RemoveCurrentOxygen(currentPlacable.OxygenUsed);
 
             }
 
@@ -75,35 +75,49 @@ public class PlacableManager : MonoBehaviour
     private void VegetationPreview()
     {
         RaycastHit hit = PlayerInputController.instance.MousePointRaycast(previewMask);
-        Vector3 position;
-        Vector3 hitNormal = hit.normal;
-
+        
         bool validHit = hit.collider != null && hit.transform.tag != "Vitalis";
-        bool waterCondition;
-
-        if (currentPlacable.onWater && hit.point.y <= terrainGen.genOptions.waterLevel
-            || currentPlacable.underwater && hit.point.y <= terrainGen.genOptions.waterLevel
-            || !currentPlacable.underwater && !currentPlacable.onWater && hit.point.y >= terrainGen.genOptions.waterLevel)
-            waterCondition = true;
-        else 
-            waterCondition = false;
-
+        bool waterCondition = CanPlaceUnderwater(hit);
 
         preview.SetActive(validHit && waterCondition);
 
-        if (preview.activeSelf)
-        {
-            position = currentPlacable.onWater
+        if(!preview.activeSelf) return;
+
+        SetPreviewPosition(hit);
+        SetPreviewRotation(hit);
+    }
+
+    private void SetPreviewPosition(RaycastHit hit)
+    {
+        Vector3 position;
+        
+        position = currentPlacable.onWater
                 ? new Vector3(hit.point.x, terrainGen.genOptions.waterLevel, hit.point.z)
                 : hit.point;
 
-            Quaternion rotation = currentPlacable.onWater
-                ? Quaternion.identity
-                : Quaternion.FromToRotation(Vector3.up, hitNormal);
+        preview.transform.position = position;
+    }
 
-            preview.transform.position = position;
-            preview.transform.rotation = rotation;
-        }
+    private void SetPreviewRotation(RaycastHit hit)
+    {
+        Vector3 hitNormal = hit.normal;
+
+        Quaternion rotation = currentPlacable.onWater
+            ? Quaternion.identity
+            : Quaternion.FromToRotation(Vector3.up, hitNormal);
+
+        
+        preview.transform.rotation = rotation;
+    }
+
+    private bool CanPlaceUnderwater(RaycastHit hit)
+    {
+        if (currentPlacable.onWater && hit.point.y <= terrainGen.genOptions.waterLevel
+            || currentPlacable.underwater && hit.point.y <= terrainGen.genOptions.waterLevel
+            || !currentPlacable.underwater && !currentPlacable.onWater && hit.point.y >= terrainGen.genOptions.waterLevel)
+            return true;
+        else
+            return false;
     }
 
     private void AlivePreview()

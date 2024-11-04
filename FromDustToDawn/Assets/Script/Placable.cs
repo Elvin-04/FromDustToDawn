@@ -11,7 +11,7 @@ public class Placable : ScriptableObject
     
     [Header("Vegtation")]
     public bool isVegetation;
-    public int OCreated;
+    public int OxygenCreated;
     public int vitalisCreated = 15;
     public float delay = 15f;
 
@@ -21,12 +21,5 @@ public class Placable : ScriptableObject
 
     [Header("Alive")]
     public bool isAlive;
-    public int OUsed;
-    public Comportement comportement;
-}
-
-
-public enum Comportement
-{
-    FISH
+    public int OxygenUsed;
 }

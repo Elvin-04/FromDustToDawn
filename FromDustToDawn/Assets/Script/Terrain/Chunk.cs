@@ -9,7 +9,7 @@ public class Chunk : MonoBehaviour
     {
         this.options = options;
 
-        Vector3[,] heightMap = new Vector3[options.gridSize, options.gridSize];
+        Vector3[,] heightMap = new Vector3[options.chunkResolution, options.chunkResolution];
 
         List<Vector3> vertices = new List<Vector3>();
         List<int> triangles = new List<int>();
@@ -17,11 +17,11 @@ public class Chunk : MonoBehaviour
         Mesh mesh = new Mesh();
 
         //Define height map
-        for (int i = 0; i < options.gridSize; i++)
+        for (int i = 0; i < options.chunkResolution; i++)
         {
-            for (int j = 0; j < options.gridSize; j++)
+            for (int j = 0; j < options.chunkResolution; j++)
             {
-                float step = options.meshSize / (options.gridSize - 1);
+                float step = options.chunkSize / (options.chunkResolution - 1);
                 Vector3 vertex = new Vector3(i * step, GetHeight(i, j), j * step);
                 heightMap[i, j] = vertex;
             }
@@ -29,9 +29,9 @@ public class Chunk : MonoBehaviour
 
 
         //Define triangles and add vertices to the list
-        for (int i = 0; i < options.gridSize - 1; i++)
+        for (int i = 0; i < options.chunkResolution - 1; i++)
         {
-            for (int j = 0; j < options.gridSize - 1; j++)
+            for (int j = 0; j < options.chunkResolution - 1; j++)
             {
                 Vector3 v0 = heightMap[i, j];
                 Vector3 v1 = heightMap[i, j + 1];
@@ -76,7 +76,7 @@ public class Chunk : MonoBehaviour
         float amplitude = 1;
         float frequence = options.perlinScale;
 
-        float step = options.meshSize / (options.gridSize - 1);
+        float step = options.chunkSize / (options.chunkResolution - 1);
 
         Vector3 worldPosition = new Vector3(x * step + transform.position.x + options.seed, 0, z * step + transform.position.z + options.seed);
 
@@ -87,19 +87,6 @@ public class Chunk : MonoBehaviour
             frequence /= options.lacunarity;
             amplitude *= options.persistance;
         }
-
-        //Vector2 centerPoint = new Vector2((options.meshSize * options.chunkWidth) / 2, (options.meshSize * options.chunkWidth) / 2);
-  
-
-        //float absX = Mathf.Abs(centerPoint.x + transform.position.x);
-        //float absZ = Mathf.Abs(centerPoint.y + z);
-
-        //if (absX > centerPoint.x + 10)
-        //{
-        //    return height * options.heightMultiplier * Normalize(x, z, new Vector2(absX, absZ));
-        //}
-
-        //previousHeight = height * options.heightMultiplier;
         return height * options.heightMultiplier;
     }
 

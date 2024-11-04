@@ -16,7 +16,7 @@ public class BuildingPanelContent : MonoBehaviour
     {
         //representationImage.sprite = placable.visualRepresentation;
         this.Name.text = placable.name;
-        OCreated.text = "O² created : " + placable.OCreated.ToString();
+        OCreated.text = "O² created : " + placable.OxygenCreated.ToString();
         Price.text = placable.price.ToString();
     }
 
