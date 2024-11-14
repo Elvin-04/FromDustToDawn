@@ -3,32 +3,60 @@ using UnityEngine.InputSystem;
 
 public class CameraController : MonoBehaviour
 {
-    public Transform cameraTransform;
     public float zoomSpeed = 5f;
-    public float zoomSmoothing = 0.1f;
-    public float minZoom = 0f;
-    public float maxZoom = 6f;
+    public float maxZoom = 15f;
+    public float minZoom = 60f;
 
-    private float targetZoom;
-    private float zoomVelocity = 0f;
+    [Header("Camera movements")]
+    public float edge = 50f;
+    public float movementSpeed = 5f;
 
-    private void Start()
+    public float minX = -10f;
+    public float maxX = 10f;
+    public float minZ = -10f;
+    public float maxZ = 10f;
+
+    private Vector2 mousePosition;
+
+    public void OnMouseMove(InputAction.CallbackContext context)
     {
-        targetZoom = cameraTransform.position.z;
+        mousePosition = context.ReadValue<Vector2>();
     }
 
     public void OnZoom(InputAction.CallbackContext context)
     {
-        float scrollAmount = context.ReadValue<float>();
+        if (UIManager.instance.buildingPanel.activeSelf) return;
 
-        targetZoom += scrollAmount * zoomSpeed * Time.deltaTime;
-        targetZoom = Mathf.Clamp(targetZoom, minZoom, maxZoom);
+        float scrollAmount = context.ReadValue<float>();
+        Camera camera = GetComponent<Camera>();
+
+        camera.fieldOfView = Mathf.Clamp(camera.fieldOfView - scrollAmount * zoomSpeed * Time.deltaTime, maxZoom, minZoom);
     }
 
     private void Update()
     {
-        float newZoom = Mathf.SmoothDamp(cameraTransform.position.z, targetZoom, ref zoomVelocity, zoomSmoothing);
-        cameraTransform.position = cameraTransform.position + cameraTransform.forward * (newZoom - cameraTransform.position.z);
-    }
+        Vector3 newPosition = transform.position;
 
+        if (mousePosition.y > Screen.height - edge)
+        {
+            newPosition += new Vector3(Time.deltaTime * movementSpeed, 0, Time.deltaTime * movementSpeed);
+        }
+        if (mousePosition.y < edge)
+        {
+            newPosition -= new Vector3(Time.deltaTime * movementSpeed, 0, Time.deltaTime * movementSpeed);
+        }
+        if (mousePosition.x < edge)
+        {
+            newPosition += new Vector3(-(Time.deltaTime * movementSpeed), 0, Time.deltaTime * movementSpeed);
+        }
+        if (mousePosition.x > Screen.width - edge)
+        {
+            newPosition += new Vector3(Time.deltaTime * movementSpeed, 0, -(Time.deltaTime * movementSpeed));
+        }
+
+        newPosition.x = Mathf.Clamp(newPosition.x, minX, maxX);
+        newPosition.z = Mathf.Clamp(newPosition.z, minZ, maxZ);
+
+        transform.position = newPosition;
+    }
 }

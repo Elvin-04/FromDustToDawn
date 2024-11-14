@@ -18,26 +18,10 @@ namespace BehaviorTree
             Node root = new Selector(new List<Node>
             {
                 new FishPatrol(this),
-                //new Sequence(new List<Node>
-                //{
-                //    new NeedToGoLake(this),
-                //    new GoToLake(this)
-                //}),
-                //new Sequence(new List<Node>
-                //{
-                //    new NeedToHarvest(this),
-                //    new VakoomHarvest(this)
-                //}),
-                //new VakoomPatrol(transform, this)
 
             });
 
             return root;
-        }
-
-        public static void PrintMsg(string a)
-        {
-            Debug.Log(a);
         }
     }
 }

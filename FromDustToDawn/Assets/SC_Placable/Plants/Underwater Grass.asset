@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61387a515b3f064a8110179d06e65bb, type: 3}
   m_Name: Underwater Grass
   m_EditorClassIdentifier: 
-  price: 0
-  visualRepresentation: {fileID: 0}
+  price: 15
+  visualRepresentation: {fileID: 2800000, guid: 5725073b4e7c8214a891be60e74a236a, type: 3}
   objectPrefab: {fileID: 459395136700492053, guid: 2b128ea14086bfb4b85785a7b2845f7c, type: 3}
   isVegetation: 1
-  OCreated: 5
+  OxygenCreated: 0
   vitalisCreated: 2
   delay: 15
   underwater: 1
   onWater: 0
   isAlive: 0
-  OUsed: 0
-  comportement: 0
+  OxygenUsed: 0
+  isUnderwaterAnimal: 0

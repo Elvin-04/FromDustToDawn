@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 using UnityEditor;
 using Unity.VisualScripting.FullSerializer;
+using Unity.AI.Navigation;
 
 public class TerrainGenerator : MonoBehaviour
 {
@@ -51,6 +52,7 @@ public class TerrainGenerator : MonoBehaviour
         {
             chunk.GenerateTerrain(genOptions);
         }
+        GetComponent<NavMeshSurface>().BuildNavMesh();
     }
 
     //Create one chunk and set the position

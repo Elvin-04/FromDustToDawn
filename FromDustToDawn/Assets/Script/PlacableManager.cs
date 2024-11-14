@@ -1,4 +1,6 @@
+using BehaviorTree;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
@@ -42,6 +44,12 @@ public class PlacableManager : MonoBehaviour
             else if(currentPlacable.isAlive)
             {
                 OxygenManager.instance.RemoveCurrentOxygen(currentPlacable.OxygenUsed);
+
+                if(preview.TryGetComponent<ChickenBT>(out ChickenBT bt))
+                {
+                    bt.isPlaced = true;
+                    bt.agent.enabled = true;
+                }
 
             }
 
@@ -126,17 +134,31 @@ public class PlacableManager : MonoBehaviour
         Vector3 position;
 
         bool validHit = hit.collider != null && hit.transform.tag != "Vitalis";
-        preview.SetActive(hit.point.y < terrainGen.genOptions.waterLevel && validHit);
+        if(currentPlacable.isUnderwaterAnimal)
+            preview.SetActive(hit.point.y < terrainGen.genOptions.waterLevel && validHit);
+        else
+            preview.SetActive(hit.point.y > terrainGen.genOptions.waterLevel && validHit);
 
         if (preview.activeSelf)
         {
-            position.x = hit.point.x;
-            position.y = ((terrainGen.genOptions.waterLevel - hit.point.y) / 2) + hit.point.y;
-            position.z = hit.point.z;
+            if(currentPlacable.isUnderwaterAnimal)
+            {
+                position.x = hit.point.x;
+                position.y = ((terrainGen.genOptions.waterLevel - hit.point.y) / 2) + hit.point.y;
+                position.z = hit.point.z;
+            }
+            else
+            {
+                position = hit.point;
+            }
+
+            if (!currentPlacable.isUnderwaterAnimal)
+                SetPreviewRotation(hit);
 
             preview.transform.position = position;
         }
     }
+
 
     public void OnSelectPlacable(Placable p)
     {

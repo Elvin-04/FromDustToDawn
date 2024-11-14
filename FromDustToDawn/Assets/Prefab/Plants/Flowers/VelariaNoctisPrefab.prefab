@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3356508143778337325}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: VelariaNoctisPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,6 +43,10 @@ PrefabInstance:
     - target: {fileID: 105173048430433895, guid: 9cb10458ad3690a4ca938b5414460389, type: 3}
       propertyPath: m_Name
       value: Plant009
+      objectReference: {fileID: 0}
+    - target: {fileID: 105173048430433895, guid: 9cb10458ad3690a4ca938b5414460389, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 738158196812958941, guid: 9cb10458ad3690a4ca938b5414460389, type: 3}
       propertyPath: m_LocalPosition.x

@@ -1,12 +1,13 @@
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 public class BuildingPanelContent : MonoBehaviour
 {
     public Placable placable;
-    public Image representationImage;
+    public RawImage representationImage;
     public TextMeshProUGUI Name;
     public TextMeshProUGUI OCreated;
     public TextMeshProUGUI Price;
@@ -14,7 +15,8 @@ public class BuildingPanelContent : MonoBehaviour
 
     public void SetDatasOnUI()
     {
-        //representationImage.sprite = placable.visualRepresentation;
+        if(placable.visualRepresentation != null)
+            representationImage.texture = placable.visualRepresentation;
         this.Name.text = placable.name;
         OCreated.text = "O² created : " + placable.OxygenCreated.ToString();
         Price.text = placable.price.ToString();

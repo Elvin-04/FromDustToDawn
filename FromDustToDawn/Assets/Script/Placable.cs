@@ -5,7 +5,7 @@ public class Placable : ScriptableObject
 {
     [Header("Common")]
     public int price;
-    public Sprite visualRepresentation;
+    public Texture visualRepresentation;
     public GameObject objectPrefab;
 
     
@@ -22,4 +22,5 @@ public class Placable : ScriptableObject
     [Header("Alive")]
     public bool isAlive;
     public int OxygenUsed;
+    public bool isUnderwaterAnimal;
 }

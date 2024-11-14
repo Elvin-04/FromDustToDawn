@@ -13,14 +13,13 @@ MonoBehaviour:
   m_Name: Crystalyon Virae
   m_EditorClassIdentifier: 
   price: 0
-  visualRepresentation: {fileID: 0}
+  visualRepresentation: {fileID: 2800000, guid: 7e9c75bec2b842747bc21ccb9e82f4a7, type: 3}
   objectPrefab: {fileID: 2325009868488574610, guid: 3392fc454fcfd3045b00226e4fecc3f1, type: 3}
   isVegetation: 1
-  OCreated: 5
+  OxygenCreated: 0
   vitalisCreated: 10
   delay: 15
   underwater: 0
   onWater: 0
   isAlive: 0
-  OUsed: 0
-  comportement: 0
+  OxygenUsed: 0

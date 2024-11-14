@@ -57,7 +57,7 @@ public class VitalisManager : MonoBehaviour
     {
         if(currentVitalisOnMap < maxVitalisOnMap)
         {
-            Instantiate(vitalisPrefab, SpawnCoordinate() + new Vector3(0,0.2f,0), Quaternion.identity);
+            Instantiate(vitalisPrefab, SpawnCoordinate() + new Vector3(0,0.7f,0), Quaternion.identity);
             currentVitalisOnMap++;
         }
         

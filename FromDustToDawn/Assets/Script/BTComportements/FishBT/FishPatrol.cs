@@ -1,7 +1,4 @@
-using System.Drawing;
-using UnityEditor.Rendering;
 using UnityEngine;
-using static Unity.VisualScripting.Member;
 
 
 namespace BehaviorTree

@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61387a515b3f064a8110179d06e65bb, type: 3}
   m_Name: Pteraspis
   m_EditorClassIdentifier: 
-  price: 0
-  visualRepresentation: {fileID: 0}
+  price: 10000
+  visualRepresentation: {fileID: 2800000, guid: 2aa19a4695e35d246ab39d4088d6c260, type: 3}
   objectPrefab: {fileID: 6842827881759338396, guid: e24eb305f0618294ba6bb9d2e5a8d3e0, type: 3}
   isVegetation: 0
-  OCreated: 0
+  OxygenCreated: 0
   vitalisCreated: 15
   delay: 15
   underwater: 0
   onWater: 0
   isAlive: 1
-  OUsed: 10
-  comportement: 0
+  OxygenUsed: 0
+  isUnderwaterAnimal: 1

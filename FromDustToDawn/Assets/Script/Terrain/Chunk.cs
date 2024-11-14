@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 using UnityEngine;
 
 public class Chunk : MonoBehaviour
@@ -63,8 +64,9 @@ public class Chunk : MonoBehaviour
 
         GetComponent<MeshCollider>().sharedMesh = mesh;
 
-
         GetComponent<MeshFilter>().mesh = mesh;
+
+        
     }
 
 

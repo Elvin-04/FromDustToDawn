@@ -13,14 +13,13 @@ MonoBehaviour:
   m_Name: Thalium Boreas
   m_EditorClassIdentifier: 
   price: 0
-  visualRepresentation: {fileID: 0}
+  visualRepresentation: {fileID: 2800000, guid: 5cc973e612948854f8fe776954c52c67, type: 3}
   objectPrefab: {fileID: 1484402230574880576, guid: 00ac574cdee0cae4b9eedd865d3aefcd, type: 3}
   isVegetation: 1
-  OCreated: 10
+  OxygenCreated: 0
   vitalisCreated: 10
   delay: 15
   underwater: 0
   onWater: 0
   isAlive: 0
-  OUsed: 0
-  comportement: 0
+  OxygenUsed: 0

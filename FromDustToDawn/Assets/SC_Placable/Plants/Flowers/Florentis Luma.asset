@@ -13,14 +13,13 @@ MonoBehaviour:
   m_Name: Florentis Luma
   m_EditorClassIdentifier: 
   price: 0
-  visualRepresentation: {fileID: 0}
+  visualRepresentation: {fileID: 2800000, guid: 3574397b882e61149813c0aba004c1d2, type: 3}
   objectPrefab: {fileID: 4085783976035317938, guid: cfe6e59d80564054fa0ccd4ee439a195, type: 3}
   isVegetation: 1
-  OCreated: 10
+  OxygenCreated: 0
   vitalisCreated: 10
   delay: 15
   underwater: 0
   onWater: 0
   isAlive: 0
-  OUsed: 0
-  comportement: 0
+  OxygenUsed: 0
