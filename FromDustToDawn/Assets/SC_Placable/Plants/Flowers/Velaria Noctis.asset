@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61387a515b3f064a8110179d06e65bb, type: 3}
   m_Name: Velaria Noctis
   m_EditorClassIdentifier: 
-  price: 0
+  price: 150
   visualRepresentation: {fileID: 2800000, guid: 6542ba1b821241f4bae3e62af2b21d8f, type: 3}
   objectPrefab: {fileID: 741672083126496605, guid: 8e971894ebf6d054d8df085dd81fbaba, type: 3}
   isVegetation: 1
-  OxygenCreated: 0
-  vitalisCreated: 10
-  delay: 15
+  OxygenCreated: 6
   underwater: 0
   onWater: 0
   isAlive: 0
   OxygenUsed: 0
+  isUnderwaterAnimal: 0
+  vitalisCreated: 0
+  delay: 15

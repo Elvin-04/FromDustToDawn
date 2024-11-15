@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61387a515b3f064a8110179d06e65bb, type: 3}
   m_Name: Lunethra Auri
   m_EditorClassIdentifier: 
-  price: 0
+  price: 200
   visualRepresentation: {fileID: 2800000, guid: 5692192899916e7498e6bc4f6bf10b3a, type: 3}
   objectPrefab: {fileID: 3516186105261642930, guid: 766f899db841c56458643bba5c181be9, type: 3}
   isVegetation: 1
-  OxygenCreated: 0
-  vitalisCreated: 10
-  delay: 15
+  OxygenCreated: 7
   underwater: 0
   onWater: 0
   isAlive: 0
   OxygenUsed: 0
+  isUnderwaterAnimal: 0
+  vitalisCreated: 0
+  delay: 15

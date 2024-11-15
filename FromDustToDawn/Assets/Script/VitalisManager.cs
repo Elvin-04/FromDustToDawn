@@ -7,6 +7,9 @@ public class VitalisManager : MonoBehaviour
     public LayerMask layerMask;
     public GameObject vitalisPrefab;
 
+    [Header("Options")]
+    public int vitalisOnSpawn = 100;
+
     [Header("Vitalis Generation Options")]
     public int maxVitalisByChunk = 5;
     public int vitalisAddedByObject = 5;
@@ -27,6 +30,7 @@ public class VitalisManager : MonoBehaviour
     {
         maxVitalisOnMap = maxVitalisByChunk * mapGen.genOptions.meshWidthByChunk * mapGen.genOptions.meshLengthByChunk;
         StartCoroutine(SpawningVitalis());
+        AddVitalis(vitalisOnSpawn);
     }
 
     public int GetVitalis()

@@ -31,21 +31,26 @@ public class PlacableManager : MonoBehaviour
     {
         if(context.performed && previewEnable && preview.activeSelf)
         {
-            if(!VitalisManager.instance.CanBuy(currentPlacable.price)) Destroy(preview);
+
+
+            if (!VitalisManager.instance.CanBuy(currentPlacable.price)) Destroy(preview);
+            else if (currentPlacable.isAlive && !OxygenManager.instance.CanPlace(currentPlacable.OxygenUsed)) Destroy(preview);
             else VitalisManager.instance.RemoveVitalis(currentPlacable.price);
             previewEnable = false;
 
             if(currentPlacable.isVegetation)
             {
                 OxygenManager.instance.AddMaximumOxygen(currentPlacable.OxygenCreated);
-                VitalisAutoCreator vtCreator = preview.AddComponent<VitalisAutoCreator>();
-                vtCreator.StartProducing(currentPlacable.vitalisCreated, currentPlacable.delay);
+                
             }
-            else if(currentPlacable.isAlive)
+            else if(currentPlacable.isAlive && OxygenManager.instance.CanPlace(currentPlacable.OxygenUsed))
             {
                 OxygenManager.instance.RemoveCurrentOxygen(currentPlacable.OxygenUsed);
 
-                if(preview.TryGetComponent<ChickenBT>(out ChickenBT bt))
+                VitalisAutoCreator vtCreator = preview.AddComponent<VitalisAutoCreator>();
+                vtCreator.StartProducing(currentPlacable.vitalisCreated, currentPlacable.delay);
+
+                if (preview.TryGetComponent<ChickenBT>(out ChickenBT bt))
                 {
                     bt.isPlaced = true;
                     bt.agent.enabled = true;

@@ -12,8 +12,6 @@ public class Placable : ScriptableObject
     [Header("Vegtation")]
     public bool isVegetation;
     public int OxygenCreated;
-    public int vitalisCreated = 15;
-    public float delay = 15f;
 
     public bool underwater;
     public bool onWater;
@@ -23,4 +21,6 @@ public class Placable : ScriptableObject
     public bool isAlive;
     public int OxygenUsed;
     public bool isUnderwaterAnimal;
+    public int vitalisCreated = 15;
+    public float delay = 15f;
 }

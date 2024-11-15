@@ -16,8 +16,8 @@ MonoBehaviour:
   visualRepresentation: {fileID: 2800000, guid: c70b8a1f9e550bf478168f728169b326, type: 3}
   objectPrefab: {fileID: 6142257656896418463, guid: 80739fb5664be5e46974a193e5c9645e, type: 3}
   isVegetation: 1
-  OxygenCreated: 0
-  vitalisCreated: 2
+  OxygenCreated: 1
+  vitalisCreated: 0
   delay: 15
   underwater: 0
   onWater: 0

@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61387a515b3f064a8110179d06e65bb, type: 3}
   m_Name: Etheloris Solum
   m_EditorClassIdentifier: 
-  price: 0
+  price: 3000
   visualRepresentation: {fileID: 2800000, guid: e87b8e8ac688f0f4caf1b678ff78fdc7, type: 3}
   objectPrefab: {fileID: 532211038976944966, guid: fd9876a09d6611748a5ad2ca5d62b477, type: 3}
   isVegetation: 1
-  OxygenCreated: 0
-  vitalisCreated: 10
-  delay: 15
+  OxygenCreated: 70
   underwater: 0
   onWater: 0
   isAlive: 0
   OxygenUsed: 0
+  isUnderwaterAnimal: 0
+  vitalisCreated: 0
+  delay: 15

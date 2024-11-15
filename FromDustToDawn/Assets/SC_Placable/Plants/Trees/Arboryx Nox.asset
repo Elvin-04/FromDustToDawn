@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61387a515b3f064a8110179d06e65bb, type: 3}
   m_Name: Arboryx Nox
   m_EditorClassIdentifier: 
-  price: 0
+  price: 1000
   visualRepresentation: {fileID: 2800000, guid: 3849ccd5f870bb74e96b2fff133fb5cb, type: 3}
   objectPrefab: {fileID: 4560101291625904092, guid: e5205b34cf2d8994d803ca40af20080c, type: 3}
   isVegetation: 1
-  OxygenCreated: 0
-  vitalisCreated: 10
-  delay: 15
+  OxygenCreated: 20
   underwater: 0
   onWater: 0
   isAlive: 0
   OxygenUsed: 0
+  isUnderwaterAnimal: 0
+  vitalisCreated: 0
+  delay: 15

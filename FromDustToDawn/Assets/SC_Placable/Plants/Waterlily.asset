@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61387a515b3f064a8110179d06e65bb, type: 3}
   m_Name: Waterlily
   m_EditorClassIdentifier: 
-  price: 0
+  price: 50
   visualRepresentation: {fileID: 2800000, guid: 4184922dd8069fe469caadeaf7e0321c, type: 3}
   objectPrefab: {fileID: 8358803479566607163, guid: 2b64645e54aad0c40989c3309bf2bcbb, type: 3}
   isVegetation: 1
-  OxygenCreated: 0
-  vitalisCreated: 5
-  delay: 15
+  OxygenCreated: 3
   underwater: 0
   onWater: 1
   isAlive: 0
   OxygenUsed: 0
+  isUnderwaterAnimal: 0
+  vitalisCreated: 0
+  delay: 15

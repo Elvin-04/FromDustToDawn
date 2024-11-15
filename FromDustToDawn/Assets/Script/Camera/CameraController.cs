@@ -18,6 +18,11 @@ public class CameraController : MonoBehaviour
 
     private Vector2 mousePosition;
 
+    private void Start()
+    {
+        SetMaxDistances();
+    }
+
     public void OnMouseMove(InputAction.CallbackContext context)
     {
         mousePosition = context.ReadValue<Vector2>();
@@ -31,6 +36,12 @@ public class CameraController : MonoBehaviour
         Camera camera = GetComponent<Camera>();
 
         camera.fieldOfView = Mathf.Clamp(camera.fieldOfView - scrollAmount * zoomSpeed * Time.deltaTime, maxZoom, minZoom);
+    }
+
+    public void SetMaxDistances()
+    {
+        maxX = (TerrainGenerator.instance.genOptions.meshWidthByChunk * TerrainGenerator.instance.genOptions.chunkSize) - 5;
+        maxZ = (TerrainGenerator.instance.genOptions.meshLengthByChunk * TerrainGenerator.instance.genOptions.chunkSize) - 5;
     }
 
     private void Update()

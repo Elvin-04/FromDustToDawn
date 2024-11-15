@@ -29,4 +29,12 @@ public class OxygenManager : MonoBehaviour
         currentOxygen -= amount;
         UIManager.instance.UpdateUIOxygen(currentOxygen, maximumOxygen);
     }
+
+    public bool CanPlace(int price)
+    {
+        if (currentOxygen - price < 0)
+            return false;
+
+        return true;
+    }
 }

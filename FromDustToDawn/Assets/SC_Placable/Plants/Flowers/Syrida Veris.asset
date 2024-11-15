@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61387a515b3f064a8110179d06e65bb, type: 3}
   m_Name: Syrida Veris
   m_EditorClassIdentifier: 
-  price: 0
+  price: 300
   visualRepresentation: {fileID: 2800000, guid: bc879b79348124e47b6438f0f110a4b4, type: 3}
   objectPrefab: {fileID: 7212281604016815928, guid: 72b350a16aae88947ae8cab62da69c5b, type: 3}
   isVegetation: 1
-  OxygenCreated: 0
-  vitalisCreated: 10
-  delay: 15
+  OxygenCreated: 9
   underwater: 0
   onWater: 0
   isAlive: 0
   OxygenUsed: 0
+  isUnderwaterAnimal: 0
+  vitalisCreated: 0
+  delay: 15
