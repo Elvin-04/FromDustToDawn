@@ -1,9 +1,7 @@
 using BehaviorTree;
 using System.Collections.Generic;
-using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
 
 public class PlacableManager : MonoBehaviour
 {
@@ -18,13 +16,28 @@ public class PlacableManager : MonoBehaviour
     private Placable currentPlacable;
 
     public LayerMask previewMask;
-    public Material redMaterial;
 
-    public TerrainGenerator terrainGen;
-    string currentPanelName;
+    private TerrainGenerator terrainGen;
+    private string currentPanelName;
+
     private void Awake()
     {
         instance = this;
+        
+    }
+
+    private void Start()
+    {
+        terrainGen = TerrainGenerator.instance;
+    }
+
+    public void OnRightClic(InputAction.CallbackContext context)
+    {
+        if(context.performed && previewEnable)
+        {
+            Destroy(preview);
+            previewEnable = false;
+        }
     }
 
     public void OnLeftClick(InputAction.CallbackContext context)
@@ -57,7 +70,6 @@ public class PlacableManager : MonoBehaviour
                 }
 
             }
-
 
             UIManager.instance.OpenBuildingPanel(currentPanelName);
             

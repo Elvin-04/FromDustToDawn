@@ -92,12 +92,12 @@ public class TerrainGenerator : MonoBehaviour
        
 
         addButtonWidth.transform.position = new Vector3(genOptions.chunkSize * ((float)genOptions.meshWidthByChunk + 0.5f) + 1, genOptions.waterLevel, (genOptions.chunkSize * genOptions.meshLengthByChunk) / 2);
-        addButtonWidth.GetComponent<ExtandTerrain>().side = 0;
+        addButtonWidth.GetComponent<ExtandTerrain>().SetSide(0);
         RectTransform buttonWidthRT = addButtonWidth.GetComponent<RectTransform>();
         buttonWidthRT.sizeDelta = new Vector2(initSize, initSize * genOptions.meshLengthByChunk);
 
         addButtonHeight.transform.position = new Vector3((genOptions.chunkSize * genOptions.meshWidthByChunk) / 2, genOptions.waterLevel, genOptions.chunkSize * ((float)genOptions.meshLengthByChunk + 0.5f) + 1);
-        addButtonHeight.GetComponent<ExtandTerrain>().side = 1;
+        addButtonHeight.GetComponent<ExtandTerrain>().SetSide(1);
         RectTransform buttonHeightRT = addButtonHeight.GetComponent<RectTransform>();
         buttonHeightRT.sizeDelta = new Vector2(initSize * genOptions.meshWidthByChunk, initSize);
     }

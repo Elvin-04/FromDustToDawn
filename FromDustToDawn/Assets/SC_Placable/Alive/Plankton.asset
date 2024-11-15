@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Plankton
   m_EditorClassIdentifier: 
   price: 200
-  visualRepresentation: {fileID: 0}
+  visualRepresentation: {fileID: 2800000, guid: 35244f696e8bab240b584eaa8d88ae3a, type: 3}
   objectPrefab: {fileID: 3636764369294707563, guid: c55f359cd09707746b85e9308d06d7d9, type: 3}
   isVegetation: 0
   OxygenCreated: 0
