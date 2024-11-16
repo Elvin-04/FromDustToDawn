@@ -12,7 +12,7 @@ public class VitalisManager : MonoBehaviour
 
     [Header("Vitalis Generation Options")]
     public int maxVitalisByChunk = 5;
-    public int vitalisAddedByObject = 5;
+    public Vector2Int minMaxVitalisAddedByObject;
     public float timeBetweenVitalisSpawning = 2f;
     private int currentVitalisOnMap = 0;
     private int maxVitalisOnMap;
@@ -83,7 +83,7 @@ public class VitalisManager : MonoBehaviour
 
     public void CollectVitalis(GameObject vitalis)
     {
-        AddVitalis(vitalisAddedByObject);
+        AddVitalis(Random.Range(minMaxVitalisAddedByObject.x, minMaxVitalisAddedByObject.y + 1));
         UIManager.instance.UpdateUIVitalisAmount();
         currentVitalisOnMap--;
         Destroy(vitalis);

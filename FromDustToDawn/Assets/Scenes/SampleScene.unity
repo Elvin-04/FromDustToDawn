@@ -1694,9 +1694,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   vitalisPrefab: {fileID: 8098467509471478953, guid: 9ddd899eedbc5ef4185077a5577af615, type: 3}
-  vitalisOnSpawn: 14017
+  vitalisOnSpawn: 100
   maxVitalisByChunk: 4
-  vitalisAddedByObject: 5
+  minMaxVitalisAddedByObject: {x: 5, y: 10}
   timeBetweenVitalisSpawning: 5
 --- !u!4 &1107433896
 Transform:
