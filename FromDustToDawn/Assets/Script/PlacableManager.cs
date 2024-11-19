@@ -44,19 +44,21 @@ public class PlacableManager : MonoBehaviour
     {
         if(context.performed && previewEnable && preview.activeSelf)
         {
+            bool canPlace;
 
+            
 
             if (!VitalisManager.instance.CanBuy(currentPlacable.price)) Destroy(preview);
             else if (currentPlacable.isAlive && !OxygenManager.instance.CanPlace(currentPlacable.OxygenUsed)) Destroy(preview);
             else VitalisManager.instance.RemoveVitalis(currentPlacable.price);
             previewEnable = false;
 
-            if(currentPlacable.isVegetation)
+            if(currentPlacable.isVegetation && VitalisManager.instance.CanBuy(currentPlacable.price))
             {
                 OxygenManager.instance.AddMaximumOxygen(currentPlacable.OxygenCreated);
                 
             }
-            else if(currentPlacable.isAlive && OxygenManager.instance.CanPlace(currentPlacable.OxygenUsed))
+            else if(currentPlacable.isAlive && OxygenManager.instance.CanPlace(currentPlacable.OxygenUsed) && VitalisManager.instance.CanBuy(currentPlacable.price))
             {
                 OxygenManager.instance.RemoveCurrentOxygen(currentPlacable.OxygenUsed);
 
